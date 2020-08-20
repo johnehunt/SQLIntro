@@ -6,9 +6,9 @@ USE university;
 
 -- Create table students (should already exist)
 CREATE TABLE students (
-  id int(11) NOT NULL,
-  name varchar(255) NOT NULL,
-  surname varchar(255) NOT NULL,
+  id int(11),
+  name varchar(255),
+  surname varchar(255),
   subject varchar(45),
   email varchar(45));
 
@@ -24,4 +24,15 @@ DESCRIBE table_name;
 
 -- Get a list of tables
 show tables;
+
+-- Adding contraints to the tabel creation
+CREATE TABLE students (
+  id int(11) NOT NULL,
+  name varchar(45) NOT NULL,
+  surname varchar(45) NOT NULL,
+  subject varchar(45) NOT NULL,
+  email varchar(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY email_UNIQUE (email)
+);
 
