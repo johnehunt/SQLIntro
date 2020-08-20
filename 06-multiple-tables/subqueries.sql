@@ -3,7 +3,7 @@ SELECT * FROM modules
          WHERE id 
          IN (SELECT module_id FROM subject_details);
 
-SELECT NOT IN subquery
+-- SELECT NOT IN subquery
 SELECT * FROM modules 
          WHERE id 
          NOT IN (SELECT module_id FROM subject_details);
