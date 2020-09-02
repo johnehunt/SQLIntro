@@ -1,9 +1,3 @@
--- Select the uniion of values from students and lecturers
-SELECT subject FROM students
-UNION
-SELECT subject FROM lecturers
-ORDER BY subject;
-
 -- Inner join between student_details and modules
 SELECT subject_details.subject, modules.id, modules.name
 FROM
