@@ -25,6 +25,6 @@ SELECT MIN(amount), MIN(date) FROM trades;
 SELECT MAX(amount), equity_id FROM trades GROUP BY equity_id;
 
 -- Step 9: Find the month, day of the month and the day (name) for all trades before the 20th of August
-SELECT client_id, equity_id, amount, MONTH(date), DAYOFMONTH(date), DAYNAME(date) FROM trading.trades WHERE date < DATE('2020-08-20');
+SELECT client_id, equity_id, amount, MONTH(date), DAYOFMONTH(date), DAYNAME(date) FROM trades WHERE date < DATE('2020-08-20');
 
 
