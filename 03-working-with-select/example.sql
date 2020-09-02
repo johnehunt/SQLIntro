@@ -22,6 +22,29 @@ SELECT AVG(mark) FROM results WHERE mark > 50;
 -- SQL SUM function
 SELECT SUM(mark) FROM results WHERE mark > 50;
 
+-- Can have multiple aggregate operations
+SELECT MIN(mark), AVG(mark), MAX(mark), COUNT(id) FROM results;
+
+-- GROUP BY clause
+SELECT COUNT(id) AS total, subject 
+       FROM students GROUP BY subject;
+
+-- Combining a GROUP BY with an aggregate function
+SELECT module, MIN(mark) 
+       FROM results 
+       GROUP BY module;
+
+-- Select with multiple group by
+SELECT module, degree, MIN(mark) 
+    FROM results 
+    GROUP BY module, degree;
+
+-- Having CLause
+SELECT COUNT(id) AS total, subject 
+       FROM students 
+       GROUP BY subject
+       HAVING total > 2;
+       
 -- SQL LIKE Operator
 SELECT * FROM students WHERE name LIKE 'Ja%';
 
@@ -30,15 +53,10 @@ SELECT name, surname,
        id as student_id, subject AS degree 
 FROM students;
 
--- GROUP BY clause
-SELECT COUNT(id) AS total, subject 
-       FROM students GROUP BY subject;
+-- Using String functions
+SELECT TRIM(module), UPPER(degree) AS degree, MIN(mark) AS min_mark 
+FROM results GROUP BY module, degree;
 
--- Having CLause
-SELECT COUNT(id) AS total, subject 
-       FROM students 
-       GROUP BY subject
-       HAVING total > 2;
 
 -- CASE statement
 SELECT id, subject, numbers, 
@@ -53,3 +71,16 @@ FROM subject_details;
 SELECT id, name, surname, birth_date, DAY(birth_date) 
        FROM people
        WHERE birth_date < Date('1996-01-01');
+
+-- Month Function
+SELECT name, surname, MONTH(birth_date) FROM people;
+
+-- Current Date and date difference functions
+SELECT name, surname, DATEDIFF(CURRENT_DATE(), birth_date) FROM people;
+
+-- Retrieve the day name
+SELECT name, surname, DAYNAME(birth_date) FROM people;
+
+-- Retrieve the day fo the week
+
+
