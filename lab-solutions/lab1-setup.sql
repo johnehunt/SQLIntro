@@ -12,19 +12,22 @@ INSERT INTO `trading`.`equity` (`id`, `symbol`, `name`, `price`) VALUES ('4', 'I
 INSERT INTO `trading`.`equity` (`id`, `symbol`, `name`, `price`) VALUES ('5', 'MSFT', 'Microsoft Corporation', '212.05');
 INSERT INTO `trading`.`equity` (`id`, `symbol`, `name`, `price`) VALUES ('6', 'AAPL', 'Apple Inc.', '469.33');
 
-CREATE TABLE `trading`.`trades` (
-  `id` INT NOT NULL,
-  `client_id` INT NOT NULL,
-  `equity_id` INT NOT NULL,
-  `amount` INT NOT NULL,
-  `date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`));
 
-INSERT INTO `trading`.`trades` (`id`, `client_id`, `equity_id`, `amount`) VALUES ('1', '2', '2', '10');
-INSERT INTO `trading`.`trades` (`id`, `client_id`, `equity_id`, `amount`) VALUES ('2', '1', '4', '15');
-INSERT INTO `trading`.`trades` (`id`, `client_id`, `equity_id`, `amount`) VALUES ('3', '4', '1', '12');
-INSERT INTO `trading`.`trades` (`id`, `client_id`, `equity_id`, `amount`) VALUES ('4', '3', '3', '8');
-INSERT INTO `trading`.`trades` (`id`, `client_id`, `equity_id`, `amount`) VALUES ('5', '1', '5', '10');
-INSERT INTO `trading`.`trades` (`id`, `client_id`, `equity_id`, `amount`) VALUES ('6', '5', '6', '4');
-INSERT INTO `trading`.`trades` (`id`, `client_id`, `equity_id`, `amount`) VALUES ('7', '1', '1', '20');
+CREATE TABLE `trades` (
+  `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `equity_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+INSERT INTO `trades` VALUES (1,2,2,10,'2020-08-27 15:21:48'),
+                            (2,1,4,15,'2020-08-15 15:21:48'),
+			    (3,4,1,12,'2020-08-27 15:21:48'),
+			    (4,3,3,8,'2020-07-17 15:21:48'),
+			    (5,1,5,10,'2020-06-12 15:21:48'),
+			    (6,5,6,4,'2020-08-27 15:21:48'),
+			    (7,1,1,20,'2020-08-27 15:21:48'),
+			    (8,4,1,4,'2020-08-30 12:30:41');
 
