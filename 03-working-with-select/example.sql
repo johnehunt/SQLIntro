@@ -27,9 +27,13 @@ SELECT * FROM students
 SELECT * FROM results WHERE mark BETWEEN 50 AND 59;
 
 -- SQL MIN and MAX functions
-SELECT MIN(mark) FROM results WHERE mark BETWEEN 50 and 59;
+SELECT MIN(mark) FROM results;
 
 SELECT MAX(mark) FROM results WHERE mark BETWEEN 50 and 59;
+
+-- To find the students with the lowest mark use
+SET @min_mark=(SELECT MIN(mark) FROM results);
+SELECT * FROM results WHERE mark = @min_mark;
 
 -- SQL COUNT function
 SELECT COUNT(mark) FROM results WHERE mark > 50;
@@ -63,6 +67,13 @@ SELECT COUNT(id) AS total, subject
        GROUP BY subject
        HAVING total > 2;
        
+-- Numerical calculations
+SELECT id, name, (mark * 0.75) AS grade from results WHERE mark > 50;
+
+SELECT id, name, mark 
+	FROM results 
+	WHERE (mark * 0.75)  > 50;
+
 -- SQL LIKE Operator
 SELECT * FROM students WHERE name LIKE 'Ja%';
 
@@ -90,6 +101,6 @@ SELECT name, surname, DATEDIFF(CURRENT_DATE(), birth_date) FROM people;
 -- Retrieve the day name
 SELECT name, surname, DAYNAME(birth_date) FROM people;
 
--- Retrieve the day fo the week
+
 
 
