@@ -1,3 +1,21 @@
+-- CASE statement
+SELECT id, subject, numbers, 
+CASE
+    WHEN numbers > 10 THEN 'Full class'
+    WHEN numbers = 10 THEN 'Some space'
+    ELSE 'Small class'
+END
+FROM subject_details;
+
+-- CASE statement
+SELECT id, subject, numbers, 
+CASE
+    WHEN numbers > 10 THEN 'Full class'
+    WHEN numbers = 10 THEN 'Some space'
+    ELSE 'Small class'
+END AS description
+FROM subject_details;
+
 -- SQL IN Operator
 SELECT * FROM students WHERE subject IN('Games', 'Animation');
 
@@ -57,15 +75,6 @@ FROM students;
 SELECT TRIM(module), UPPER(degree) AS degree, MIN(mark) AS min_mark 
 FROM results GROUP BY module, degree;
 
-
--- CASE statement
-SELECT id, subject, numbers, 
-CASE
-    WHEN numbers > 10 THEN 'Full class'
-    WHEN numbers = 10 THEN 'Some space'
-    ELSE 'Small class'
-END AS description
-FROM subject_details;
 
 -- Date Function
 SELECT id, name, surname, birth_date, DAY(birth_date) 
