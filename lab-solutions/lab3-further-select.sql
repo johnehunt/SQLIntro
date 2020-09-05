@@ -15,11 +15,12 @@ SELECT COUNT(id) AS TOTAL, SUM(amount) FROM trades WHERE equity_id = 1;
 -- Step 5 Count the number of trades and their value for each client involved with equity 1
 SELECT client_id, COUNT(id), SUM(amount) FROM trading.trades WHERE equity_id = 1 GROUP BY client_id;
 
--- Step 6: Find all the clients who are not associated with a company
-SELECT * FROM clients WHERE company IS NULL;
-
--- Step 7 Find MIN amount and date 
+-- Step 6 Find MIN amount and date 
 SELECT MIN(amount), MIN(date) FROM trades;
+
+-- Step 7: Find equity id and client id of the trades with the smallest amount
+SET @min_amount=(SELECT MIN(amount) FROM trades);
+SELECT * FROM trades WHERE amount = @min_amount;
 
 -- Step 8: Find MAX for each equity
 SELECT MAX(amount), equity_id FROM trades GROUP BY equity_id;

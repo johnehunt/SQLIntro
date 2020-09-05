@@ -10,3 +10,10 @@ SELECT * FROM students WHERE subject = 'Games' ORDER BY name;
 -- Using Descending with WHERE and ORDER BY
 SELECT * FROM students WHERE subject = 'Games' ORDER BY name desc;
 
+-- Multiple order by columns
+SELECT mark, surname, name, module, degree FROM `uni-database`.results ORDER BY mark DESC, surname, name;
+
+-- Change the order
+SELECT mark, surname, name, module, degree FROM `uni-database`.results ORDER BY mark DESC, surname, name DESC;
+
+

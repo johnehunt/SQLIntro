@@ -1,3 +1,21 @@
+-- CASE statement
+SELECT id, subject, numbers, 
+CASE
+    WHEN numbers > 10 THEN 'Full class'
+    WHEN numbers = 10 THEN 'Some space'
+    ELSE 'Small class'
+END
+FROM subject_details;
+
+-- CASE statement
+SELECT id, subject, numbers, 
+CASE
+    WHEN numbers > 10 THEN 'Full class'
+    WHEN numbers = 10 THEN 'Some space'
+    ELSE 'Small class'
+END AS description
+FROM subject_details;
+
 -- SQL IN Operator
 SELECT * FROM students WHERE subject IN('Games', 'Animation');
 
@@ -9,9 +27,13 @@ SELECT * FROM students
 SELECT * FROM results WHERE mark BETWEEN 50 AND 59;
 
 -- SQL MIN and MAX functions
-SELECT MIN(mark) FROM results WHERE mark BETWEEN 50 and 59;
+SELECT MIN(mark) FROM results;
 
 SELECT MAX(mark) FROM results WHERE mark BETWEEN 50 and 59;
+
+-- To find the students with the lowest mark use
+SET @min_mark=(SELECT MIN(mark) FROM results);
+SELECT * FROM results WHERE mark = @min_mark;
 
 -- SQL COUNT function
 SELECT COUNT(mark) FROM results WHERE mark > 50;
@@ -45,6 +67,13 @@ SELECT COUNT(id) AS total, subject
        GROUP BY subject
        HAVING total > 2;
        
+-- Numerical calculations
+SELECT id, name, (mark * 0.75) AS grade from results WHERE mark > 50;
+
+SELECT id, name, mark 
+	FROM results 
+	WHERE (mark * 0.75)  > 50;
+
 -- SQL LIKE Operator
 SELECT * FROM students WHERE name LIKE 'Ja%';
 
@@ -57,15 +86,6 @@ FROM students;
 SELECT TRIM(module), UPPER(degree) AS degree, MIN(mark) AS min_mark 
 FROM results GROUP BY module, degree;
 
-
--- CASE statement
-SELECT id, subject, numbers, 
-CASE
-    WHEN numbers > 10 THEN 'Full class'
-    WHEN numbers = 10 THEN 'Some space'
-    ELSE 'Small class'
-END AS description
-FROM subject_details;
 
 -- Date Function
 SELECT id, name, surname, birth_date, DAY(birth_date) 
@@ -81,6 +101,6 @@ SELECT name, surname, DATEDIFF(CURRENT_DATE(), birth_date) FROM people;
 -- Retrieve the day name
 SELECT name, surname, DAYNAME(birth_date) FROM people;
 
--- Retrieve the day fo the week
+
 
 
