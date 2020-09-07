@@ -65,8 +65,12 @@ SELECT module, degree, MIN(mark)
 SELECT COUNT(id) AS total, subject 
        FROM students 
        GROUP BY subject
-       HAVING total > 2;
-       
+       HAVING total > 2;      
+
+-- Partition Clause
+SELECT name, surname, mark,
+   COUNT(mark) OVER ( PARTITION BY id ORDER by mark) as position FROM results;
+
 -- Numerical calculations
 SELECT id, name, (mark * 0.75) AS grade from results WHERE mark > 50;
 
