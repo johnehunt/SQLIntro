@@ -1,3 +1,3 @@
-CREATE DATABASE univeristy; 
+CREATE DATABASE university; 
 
 USE university;
