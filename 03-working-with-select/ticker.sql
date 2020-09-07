@@ -61,19 +61,19 @@ SELECT symbol, COUNT(symbol) AS num, AVG(value), time_stamp
     ORDER BY symbol;
 
 -- Select symbols and number of ticks and averages based on 5 minute windows
-SELECT symbol, COUNT(symbol) as 'num of ticks', AVG(value), TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
+SELECT symbol, COUNT(symbol) AS 'num of ticks', AVG(value), TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
     FROM ticker 
-    GROUP by symbol, ts
+    GROUP BY symbol, ts
     ORDER BY ts;
 
 -- Select all ticks for IBM
 SELECT * FROM ticker WHERE symbol = 'IBM' ORDER BY time_stamp;
 
 -- Select IBM and calculate the number of ticks and the average value every 5 minutes
-SELECT symbol, COUNT(value) as num, AVG(value), TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
+SELECT symbol, COUNT(value) AS num, AVG(value), TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
     FROM ticker 
     WHERE symbol = 'IBM'
-    GROUP by symbol, ts
+    GROUP BY symbol, ts
     ORDER BY ts;
 
 
