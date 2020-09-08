@@ -19,6 +19,5 @@ INSERT INTO `clients` (`id`, `name`, `surname`, `company`, `email`, `credit_limi
 INSERT INTO `clients` (`id`, `name`, `surname`, `email`, `credit_limit`) VALUES ('5', 'Phoebe', 'Byrne', 'pb@ggmail.com', 900.00); 
 INSERT INTO `clients` (`id`, `name`, `surname`, `company`, `email`, `credit_limit`) VALUES (6, 'Gryff', 'Andrews', 'PYMCO', 'ga@pymco.com', 333.33); 
  
- 
 SELECT * FROM clients;
  
