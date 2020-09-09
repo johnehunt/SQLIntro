@@ -7,6 +7,11 @@ SELECT module, average - 10 AS adjusted_avg
 SELECT * FROM modules 
          WHERE id 
          IN (SELECT module_id FROM subject_details);
+         
+-- Using a subquery to calculate the students with a minimum mark
+SELECT * FROM results 
+         WHERE mark 
+         IN (SELECT MIN(mark) FROM results);
 
 -- SELECT NOT IN subquery
 SELECT * FROM modules 
