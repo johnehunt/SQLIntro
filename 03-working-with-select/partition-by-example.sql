@@ -1,15 +1,15 @@
--- Set up the database
-DROP TABLE IF EXISTS `module_results`;
+-- Set up the module results table data
+DROP TABLE IF EXISTS module_results;
 
-CREATE TABLE `module_results` (
-  `id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `module` varchar(45) NOT NULL,
-  `mark` int(11) NOT NULL,
+CREATE TABLE module_results (
+  id INT NOT NULL, 
+  student_id INT NOT NULL,
+  module VARCHAR(45) NOT NULL,
+  mark INT NOT NULL,
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO `module_results` VALUES 
+INSERT INTO module_results VALUES 
     (1,1,'Databases and SQL',55),
     (2,2,'Databases and SQL',65),
     (3,3,'Databases and SQL',72),
@@ -27,7 +27,8 @@ SELECT * FROM module_results;
 -- Find average for each module
 SELECT module, AVG(mark) FROM module_results GROUP BY module;
 
--- Return the marks for each student, aloing with the average for th emodule
+-- Return the marks for each student, aloing 
+-- with the average for the module
 SELECT module, student_id, mark, 
        AVG(mark) OVER (PARTITION BY module) AS module_average 
        FROM module_results;
