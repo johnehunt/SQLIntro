@@ -2,7 +2,7 @@ USE trading;
 
 DROP TABLE IF EXISTS ticker;
 
-CREATE TABLE `trading`.`ticker` (
+CREATE TABLE `ticker` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `symbol` VARCHAR(45) NOT NULL,
   `value` VARCHAR(45) NOT NULL,
@@ -45,10 +45,10 @@ INSERT INTO `ticker` VALUES
 SELECT * FROM ticker;
 
 -- Obtain the average for each symbol
-SELECT symbol, AVG(value) FROM ticker GROUP BY symbol;
+SELECT symbol, ROUND(AVG(value), 2) FROM ticker GROUP BY symbol;
 
 -- Obtain the average for each symbol and the sum divided by 5
-SELECT symbol, AVG(value), SUM(value) / 5 FROM ticker GROUP BY symbol;
+SELECT symbol, ROUND(AVG(value), 2), TRUNCATE(SUM(value) / 5, 2) FROM ticker GROUP BY symbol;
 
 -- Get various aggregation values
 SELECT symbol, AVG(value), COUNT(value), SUM(value) / 5, SUM(value) / COUNT(value) 
@@ -58,19 +58,25 @@ SELECT symbol, AVG(value), COUNT(value), SUM(value) / 5, SUM(value) / COUNT(valu
 SELECT symbol, COUNT(symbol) AS num, AVG(value), time_stamp 
     FROM ticker 
     GROUP BY symbol, time_stamp
-    ORDER BY symbol;
+    ORDER BY time_stamp;
 
 -- Select symbols and number of ticks and averages based on 5 minute windows
-SELECT symbol, COUNT(symbol) AS 'num of ticks', AVG(value), TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
+SELECT symbol, 
+       COUNT(symbol) AS 'num of ticks', 
+       ROUND(AVG(value), 2) AS 'avg', 
+       TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
     FROM ticker 
     GROUP BY symbol, ts
-    ORDER BY ts;
+    ORDER BY symbol;
 
 -- Select all ticks for IBM
 SELECT * FROM ticker WHERE symbol = 'IBM' ORDER BY time_stamp;
 
 -- Select IBM and calculate the number of ticks and the average value every 5 minutes
-SELECT symbol, COUNT(value) AS num, AVG(value), TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
+SELECT symbol, 
+       COUNT(value) AS num, 
+       ROUND(AVG(value), 2) AS 'avg', 
+       TIMESTAMP(FLOOR(TIMESTAMP(time_stamp) DIV 500) * 500) AS ts
     FROM ticker 
     WHERE symbol = 'IBM'
     GROUP BY symbol, ts
