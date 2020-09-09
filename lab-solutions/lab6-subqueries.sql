@@ -3,8 +3,6 @@
 
 SELECT * FROM trades;
 
-SELECT COUNT(id), date FROM trades GROUP BY date;
-
 SELECT client_id, amount, date
   FROM (SELECT client_id, 
                date, 
@@ -15,6 +13,10 @@ SELECT client_id, amount, date
 -- Step 2 Select all clients currently involved in a trade
 
 SELECT * FROM clients WHERE id IN (SELECT client_id FROM trades);
+
+-- Step 3 Now find all the clients not involve din a trade
+
+SELECT * FROM clients WHERE id NOT IN (SELECT client_id FROM trades);
 
 -- Step 3 Find all clients with two or more trades
 SELECT * 

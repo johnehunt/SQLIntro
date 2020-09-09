@@ -1,4 +1,4 @@
--- Select the uniion of values from students and lecturers
+-- Select the union of values from students and lecturers
 SELECT subject FROM students
 UNION
 SELECT subject FROM lecturers;
@@ -18,4 +18,9 @@ ORDER BY subject DESC;
 SELECT subject, name FROM students
 UNION
 SELECT subject, name FROM lecturers
+ORDER BY subject;
+
+SELECT subject, name, surname FROM students
+UNION
+SELECT subject, name, surname FROM lecturers
 ORDER BY subject;
