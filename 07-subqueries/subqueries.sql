@@ -53,4 +53,3 @@ SELECT id, subject, module_id, numbers,
         ELSE 'NOT REGISTERED' 
     END AS module_status
 FROM subject_details;
-
