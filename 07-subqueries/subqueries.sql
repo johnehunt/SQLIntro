@@ -31,13 +31,13 @@ SELECT id, name, surname, mark
 -- Using ANY with a subquery
 SELECT name 
        FROM modules 
-       WHERE id = ANY(SELECT module_id 
+       WHERE id = ANY (SELECT module_id 
                              FROM subject_details 
                              WHERE numbers > 9);
 -- Using a Row Subquery
 SELECT id, name, surname, mark
     FROM results
-    WHERE ROW(name, surname) = ANY (SELECT name, surname FROM students);
+    WHERE ROW(name, surname) IN (SELECT name, surname FROM students);
 
 -- Using the Exists operator
 SELECT * FROM modules 
@@ -49,7 +49,7 @@ SELECT * FROM modules
 -- Sub Query in a Case Statement
 SELECT id, subject, module_id, numbers,
     CASE 
-        WHEN module_id = ANY (SELECT id FROM modules) THEN 'Registered'
+        WHEN module_id IN (SELECT id FROM modules) THEN 'Registered'
         ELSE 'NOT REGISTERED' 
     END AS module_status
 FROM subject_details;
