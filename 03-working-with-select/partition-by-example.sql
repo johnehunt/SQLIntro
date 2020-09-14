@@ -20,6 +20,10 @@ INSERT INTO module_results VALUES
     (8,2,'Web Technologies',63),
     (9,3,'Web Technologies',74);
 
+-- ---------------------------------
+-- Examples using the above data
+-- are given below
+-- ---------------------------------
 
 -- Simple query across the data
 SELECT * FROM module_results;
