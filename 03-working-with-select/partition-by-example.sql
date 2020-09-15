@@ -38,8 +38,8 @@ SELECT module, student_id, mark,
        FROM module_results;
        
 -- Using a partition as a subquery
-SELECT module, student_id, mark FROM (
-	SELECT module, student_id, mark, 
+SELECT module, student_id, mark 
+    FROM (SELECT module, student_id, mark, 
 		   AVG(mark) OVER (PARTITION BY module) AS module_average 
 		   FROM module_results) AS tbl
 WHERE tbl.mark > tbl.module_average;
