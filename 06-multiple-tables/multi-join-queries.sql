@@ -27,3 +27,10 @@ INNER JOIN studies ON students.id = studies.student_id
 INNER JOIN modules ON studies.module_id = modules.id
 GROUP BY modules.id
 ORDER BY modules.id;
+
+-- Count number of students and sort of that count
+SELECT COUNT(students.id) AS student_count, modules.id AS module_id, modules.name FROM students
+INNER JOIN studies ON students.id = studies.student_id
+INNER JOIN modules ON studies.module_id = modules.id
+GROUP BY modules.id
+ORDER BY student_count DESC;
