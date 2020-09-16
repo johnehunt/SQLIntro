@@ -31,7 +31,7 @@ SELECT * FROM module_results;
 -- Find average for each module
 SELECT module, AVG(mark) FROM module_results GROUP BY module;
 
--- Return the marks for each student, aloing 
+-- Return the marks for each student, along 
 -- with the average for the module
 SELECT module, student_id, mark, 
        AVG(mark) OVER (PARTITION BY module) AS module_average 
