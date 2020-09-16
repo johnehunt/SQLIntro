@@ -19,7 +19,7 @@ SELECT client_id, COUNT(id), SUM(amount) FROM trading.trades WHERE equity_id = 1
 SELECT MIN(amount), MIN(date) FROM trades;
 
 -- Step 7: Find equity id and client id of the trades with the smallest amount
-SET @min_amount=(SELECT MIN(amount) FROM trades);
+SET @min_amount = (SELECT MIN(amount) FROM trades);
 SELECT * FROM trades WHERE amount = @min_amount;
 
 -- Step 8: Find MAX for each equity
