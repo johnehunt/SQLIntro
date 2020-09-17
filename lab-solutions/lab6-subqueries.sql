@@ -1,9 +1,6 @@
 -- -------------------------------------------------------------
 -- Step 1 For the trades table, find the client ids with the largest 
 -- amount for each date
-
-SELECT * FROM trades;
-
 SELECT client_id, amount, date
   FROM (SELECT client_id, 
                date, 
@@ -13,7 +10,6 @@ SELECT client_id, amount, date
   
 -- -------------------------------------------------------------
 -- Step 2 Select all clients currently involved in a trade
-
 SELECT * FROM clients WHERE id IN (SELECT client_id FROM trades);
 
 -- -------------------------------------------------------------
