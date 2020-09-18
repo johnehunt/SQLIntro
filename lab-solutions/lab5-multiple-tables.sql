@@ -7,7 +7,7 @@ SELECT clients.name, clients.surname, companies.name
 SELECT COUNT(clients.id) AS count, companies.name 
     FROM clients INNER JOIN companies 
         ON clients.company_id = companies.id
-    GROUP BY companies.id;
+    GROUP BY companies.name;
 
 -- Step 3: Perform a selection across 3 tables
 -- Perform a query that will retrieve:
