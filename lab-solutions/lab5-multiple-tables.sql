@@ -14,9 +14,10 @@ SELECT COUNT(clients.id) AS count, companies.name
 --    * Client id, client name, client surname and client email
 --    * The trade id and trade amount
 --    * The equity id and the equity symbol
-SELECT clients.id AS client_id, clients.name, clients.surname, clients.email, 
-	trades.id AS trade_id, trades.amount, 
-    equity.id AS equity_id, equity.symbol 
+SELECT clients.id AS client_id, 
+       clients.name, clients.surname, clients.email, 
+	   trades.id AS trade_id, trades.amount, 
+       equity.id AS equity_id, equity.symbol 
 FROM clients
     INNER JOIN trades ON clients.id = trades.client_id
     INNER JOIN equity ON trades.equity_id = equity.id;
