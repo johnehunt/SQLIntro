@@ -1,6 +1,9 @@
 -- -------------------------------------------------------------
 -- Step 1 For the trades table, find the client ids with the largest 
 -- amount for each date
+
+SELECT client_id, date, amount FROM trades;
+
 SELECT client_id, amount, date
   FROM (SELECT client_id, 
                date, 
@@ -10,15 +13,19 @@ SELECT client_id, amount, date
   
 -- -------------------------------------------------------------
 -- Step 2 Select all clients currently involved in a trade
-SELECT * FROM clients WHERE id IN (SELECT client_id FROM trades);
+SELECT * 
+    FROM clients 
+    WHERE id IN (SELECT client_id FROM trades);
 
 -- -------------------------------------------------------------
 -- Step 3 Now find all the clients not involve din a trade
 
-SELECT * FROM clients WHERE id NOT IN (SELECT client_id FROM trades);
+SELECT * 
+    FROM clients 
+    WHERE id NOT IN (SELECT client_id FROM trades);
 
 -- -------------------------------------------------------------
--- Step 3 Find all clients with two or more trades
+-- Step 4 Find all clients with two or more trades
 SELECT * 
     FROM clients 
 	WHERE id = ANY (SELECT client_id 
