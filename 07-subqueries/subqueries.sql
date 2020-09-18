@@ -46,6 +46,15 @@ SELECT * FROM modules
                  WHERE modules.id = subject_details.module_id)
   ORDER BY id;
 
+-- -----
+
+SELECT my_tbl.module, (average - 10) AS adjusted_avg 
+    FROM (SELECT module, AVG(mark) AS average 
+              FROM module_results 
+              GROUP BY module) AS my_tbl 
+    WHERE average > 50;
+
+
 -- Sub Query in a Case Statement
 SELECT id, subject, module_id, numbers,
     CASE 
